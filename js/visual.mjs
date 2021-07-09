@@ -1,5 +1,5 @@
 import { BinarySearchTree } from "./Tree.mjs";
-
+import { breadFirstSearchTraversal } from "./bfs.mjs";
 import { 
     btn,
     formDiv,
@@ -48,7 +48,7 @@ const generateRandomTree = () => {
         let randomNum = Math.floor(Math.random() * 20) + 1;
         if (data.indexOf(randomNum) === -1 ) data.push(randomNum);
     };
-    console.log(data);
+    // console.log(data);
 
     data.forEach((elem) => tree.insertNode(elem));
 
@@ -58,6 +58,11 @@ const generateRandomTree = () => {
 const generateEmptyTree = () => {
     tree = null;
     console.log(tree)
+}
+
+const traversal = () =>  {
+    let result = breadFirstSearchTraversal(tree.root);
+    console.log(result);
 }
 
 // DOM
@@ -73,6 +78,8 @@ emptyBtn.addEventListener('click', generateEmptyTree);
 // TRAVERSAL BTNS EVENTS
 let traversalBtn = document.querySelector('#traversal');
 traversalBtn.addEventListener('click', handleTraversalUI);
+bfsButton.addEventListener('click', traversal);
+
 
 
 
