@@ -1,43 +1,55 @@
 import { BinarySearchTree } from "./Tree.mjs";
 import { breadFirstSearchTraversal } from "./bfs.mjs";
 import { 
+    bfsButton,
+    dfsButton,
     btn,
+    emptyBtn,
     formDiv,
     input,
     randomBtn,
-    emptyBtn,
-    bfsButton,
-    dfsButton
+    traversalContainer
  } from "./components.mjs";
+import { depthFirstSearch } from "./dfs.mjs";
+// import { traversalContainer } from "./components.mjs";
+import { traversalTab } from "./components.mjs";
+import { dfsOrderContainer } from "./components.mjs";
+import { inorderBtn } from "./components.mjs";
+import { preorderBtn } from "./components.mjs";
+import { postorderBtn } from "./components.mjs";
 
 //  GLOBAL VARIABLES
 let tree = new BinarySearchTree();
 
 // STATES
 let isCreateVisible = false;
+let isTraverseVisible = false;
+let isDfsTrayOpen = false;
 
-// FUNCTIONS
-const setOpen = (value) => {
-    isCreateVisible = value;
-}
 
 // UI FUNCTIONALITY
 const inputVisible = () => {
-    if (!isCreateVisible) {
+    isCreateVisible = !isCreateVisible;
+
+    if (isCreateVisible) {
         formDiv.appendChild(randomBtn);
         formDiv.appendChild(emptyBtn);
-        setOpen(true)
     } else {
         formDiv.removeChild(randomBtn);
         formDiv.removeChild(emptyBtn);
-        setOpen(false);
     }
 }
 
+
 const handleTraversalUI = () => {
-    let traversalDiv = document.querySelector('.traversal-container');
-    traversalDiv.appendChild(bfsButton);
-    traversalDiv.appendChild(dfsButton);
+    isTraverseVisible = !isTraverseVisible;
+
+    if (isTraverseVisible) {
+        traversalContainer.appendChild(traversalTab);
+    } else {
+        traversalContainer.removeChild(traversalTab);
+        // traversalContainer.removeChild(dfsButton);
+    } 
 }
 
 const generateRandomTree = () => {
@@ -60,9 +72,42 @@ const generateEmptyTree = () => {
     console.log(tree)
 }
 
-const traversal = () =>  {
+const traversalBfs = () =>  {
     let result = breadFirstSearchTraversal(tree.root);
     console.log(result);
+}
+
+const showDfsTray = () => {
+    isDfsTrayOpen = !isDfsTrayOpen;
+    let orders = [inorderBtn, preorderBtn, postorderBtn];
+
+    if (isDfsTrayOpen) {
+        for (let i=0; i < orders.length; i++) {
+            dfsOrderContainer.appendChild(orders[i]);
+        };
+    } else {
+        for (let i=0; i < orders.length; i++) {
+            dfsOrderContainer.removeChild(orders[i]);
+        };
+    }
+}
+
+const handleInOrderTraversal = () =>  {
+    let { inOrderTraversal } = depthFirstSearch();
+    let result = inOrderTraversal(tree.root, []);
+    console.log('result list ', result);
+}
+
+const handlePreOrderTraversal = () =>  {
+    let { preOrderTraversal } = depthFirstSearch();
+    let result = preOrderTraversal(tree.root, []);
+    console.log('result list ', result);
+}
+
+const handlePostOrderTraversal = () =>  {
+    let { postOrderTraversal } = depthFirstSearch();
+    let result = postOrderTraversal(tree.root, []);
+    console.log('result list ', result);
 }
 
 // DOM
@@ -78,8 +123,11 @@ emptyBtn.addEventListener('click', generateEmptyTree);
 // TRAVERSAL BTNS EVENTS
 let traversalBtn = document.querySelector('#traversal');
 traversalBtn.addEventListener('click', handleTraversalUI);
-bfsButton.addEventListener('click', traversal);
-
+bfsButton.addEventListener('click', traversalBfs);
+dfsButton.addEventListener('click', showDfsTray);
+inorderBtn.addEventListener('click', handleInOrderTraversal);
+preorderBtn.addEventListener('click', handlePreOrderTraversal);
+postorderBtn.addEventListener('click', handlePostOrderTraversal);
 
 
 
