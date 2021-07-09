@@ -1,13 +1,14 @@
 import { BinarySearchTree } from "./Tree.mjs";
 import { breadFirstSearchTraversal } from "./bfs.mjs";
 import { 
+    bfsButton,
+    dfsButton,
     btn,
+    emptyBtn,
     formDiv,
     input,
     randomBtn,
-    emptyBtn,
-    bfsButton,
-    dfsButton
+    traversalDiv
  } from "./components.mjs";
 
 //  GLOBAL VARIABLES
@@ -15,29 +16,33 @@ let tree = new BinarySearchTree();
 
 // STATES
 let isCreateVisible = false;
+let isTraverseVisible = false;
 
-// FUNCTIONS
-const setOpen = (value) => {
-    isCreateVisible = value;
-}
 
 // UI FUNCTIONALITY
 const inputVisible = () => {
-    if (!isCreateVisible) {
+    isCreateVisible = !isCreateVisible;
+
+    if (isCreateVisible) {
         formDiv.appendChild(randomBtn);
         formDiv.appendChild(emptyBtn);
-        setOpen(true)
     } else {
         formDiv.removeChild(randomBtn);
         formDiv.removeChild(emptyBtn);
-        setOpen(false);
     }
 }
 
+
 const handleTraversalUI = () => {
-    let traversalDiv = document.querySelector('.traversal-container');
-    traversalDiv.appendChild(bfsButton);
-    traversalDiv.appendChild(dfsButton);
+    isTraverseVisible = !isTraverseVisible;
+
+    if (isTraverseVisible) {
+        traversalDiv.appendChild(bfsButton);
+        traversalDiv.appendChild(dfsButton);
+    } else {
+        traversalDiv.removeChild(bfsButton);
+        traversalDiv.removeChild(dfsButton);
+    } 
 }
 
 const generateRandomTree = () => {

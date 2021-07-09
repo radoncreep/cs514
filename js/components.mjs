@@ -21,6 +21,8 @@ let dfsButton = document.createElement('button')
 dfsButton.setAttribute('id', 'dfsBtn');;
 dfsButton.innerHTML = 'DFS';
 
+let traversalDiv = document.querySelector('.traversal-container');
+
 
 export {
     bfsButton,
@@ -31,6 +33,7 @@ export {
     input,
     randomBtn,
     submitButton,
+    traversalDiv
 }
 
 
