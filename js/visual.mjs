@@ -8,8 +8,15 @@ import {
     formDiv,
     input,
     randomBtn,
-    traversalDiv
+    traversalContainer
  } from "./components.mjs";
+import { depthFirstSearch } from "./dfs.mjs";
+// import { traversalContainer } from "./components.mjs";
+import { traversalTab } from "./components.mjs";
+import { dfsOrderContainer } from "./components.mjs";
+import { inorderBtn } from "./components.mjs";
+import { preorderBtn } from "./components.mjs";
+import { postorderBtn } from "./components.mjs";
 
 //  GLOBAL VARIABLES
 let tree = new BinarySearchTree();
@@ -17,6 +24,7 @@ let tree = new BinarySearchTree();
 // STATES
 let isCreateVisible = false;
 let isTraverseVisible = false;
+let isDfsTrayOpen = false;
 
 
 // UI FUNCTIONALITY
@@ -37,11 +45,10 @@ const handleTraversalUI = () => {
     isTraverseVisible = !isTraverseVisible;
 
     if (isTraverseVisible) {
-        traversalDiv.appendChild(bfsButton);
-        traversalDiv.appendChild(dfsButton);
+        traversalContainer.appendChild(traversalTab);
     } else {
-        traversalDiv.removeChild(bfsButton);
-        traversalDiv.removeChild(dfsButton);
+        traversalContainer.removeChild(traversalTab);
+        // traversalContainer.removeChild(dfsButton);
     } 
 }
 
@@ -65,9 +72,42 @@ const generateEmptyTree = () => {
     console.log(tree)
 }
 
-const traversal = () =>  {
+const traversalBfs = () =>  {
     let result = breadFirstSearchTraversal(tree.root);
     console.log(result);
+}
+
+const showDfsTray = () => {
+    isDfsTrayOpen = !isDfsTrayOpen;
+    let orders = [inorderBtn, preorderBtn, postorderBtn];
+
+    if (isDfsTrayOpen) {
+        for (let i=0; i < orders.length; i++) {
+            dfsOrderContainer.appendChild(orders[i]);
+        };
+    } else {
+        for (let i=0; i < orders.length; i++) {
+            dfsOrderContainer.removeChild(orders[i]);
+        };
+    }
+}
+
+const handleInOrderTraversal = () =>  {
+    let { inOrderTraversal } = depthFirstSearch();
+    let result = inOrderTraversal(tree.root, []);
+    console.log('result list ', result);
+}
+
+const handlePreOrderTraversal = () =>  {
+    let { preOrderTraversal } = depthFirstSearch();
+    let result = preOrderTraversal(tree.root, []);
+    console.log('result list ', result);
+}
+
+const handlePostOrderTraversal = () =>  {
+    let { postOrderTraversal } = depthFirstSearch();
+    let result = postOrderTraversal(tree.root, []);
+    console.log('result list ', result);
 }
 
 // DOM
@@ -83,8 +123,11 @@ emptyBtn.addEventListener('click', generateEmptyTree);
 // TRAVERSAL BTNS EVENTS
 let traversalBtn = document.querySelector('#traversal');
 traversalBtn.addEventListener('click', handleTraversalUI);
-bfsButton.addEventListener('click', traversal);
-
+bfsButton.addEventListener('click', traversalBfs);
+dfsButton.addEventListener('click', showDfsTray);
+inorderBtn.addEventListener('click', handleInOrderTraversal);
+preorderBtn.addEventListener('click', handlePreOrderTraversal);
+postorderBtn.addEventListener('click', handlePostOrderTraversal);
 
 
 

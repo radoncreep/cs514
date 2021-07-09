@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algorithms Visualization</title>
+    <link rel="shortcut icon" href="#">
 </head>
 <body>
     <style>
@@ -30,7 +31,7 @@
         }
         .selection-container {
             flex-direction: column;
-            width: 40%;
+            width: 45%;
             height: 30vh;
             margin: 20px 0;
             background-color: orange;
@@ -42,7 +43,7 @@
             flex-direction: column;
             height: inherit;
             /* background-color: green; */
-            padding: 10px;
+            /* padding: 10px; */
         }
         .choose {
             margin: 5px 0;
@@ -51,6 +52,11 @@
             width: inherit;
             /* background-color: red; */
             justify-content: flex-start;
+        }
+        .traversal-container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
         }
         button {
             padding: 5px 15px;
@@ -85,9 +91,13 @@
                     <button id="delete">Delete</button>
                 </div>
                 <div class="traversal-container"> 
-                    <button id="traversal">Traversals</button>
+                    <button 
+                        style="margin-bottom: 5px; height: 30px;"
+                        id="traversal"
+                    >
+                        Traversals
+                    </button>
                 </div>
-
             </div>
         </div>
     </div>
