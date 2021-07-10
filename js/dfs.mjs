@@ -1,16 +1,15 @@
-export const depthFirstSearch = (root) => {
-    let list = [];
+export const depthFirstSearch = () => {
 
     const inOrderTraversal = (root, list) => { // left parent right (nodes)
-        if (!root) return 
+        if (!root) return null;
         let currentNode = root;
-
+        
         if (currentNode.left) {
             inOrderTraversal(currentNode.left, list);
         };
-
+        
         list.push(currentNode.value);
-
+        
         if (currentNode.right) {
             inOrderTraversal(currentNode.right, list);
         }
@@ -19,7 +18,7 @@ export const depthFirstSearch = (root) => {
     }
 
     const preOrderTraversal = (root, list) => { // parent left right (nodes)
-        if (!root) return 
+        if (!root) return null;
         let currentNode = root;
 
         list.push(currentNode.value);
@@ -36,7 +35,7 @@ export const depthFirstSearch = (root) => {
     }
 
     const postOrderTraversal = (root, list) => { // left right parent (nodes)
-        if (!root) return 
+        if (!root) return null;
         let currentNode = root;
 
         if (currentNode.left) {

@@ -60,23 +60,26 @@ const generateRandomTree = () => {
         let randomNum = Math.floor(Math.random() * 20) + 1;
         if (data.indexOf(randomNum) === -1 ) data.push(randomNum);
     };
-    // console.log(data);
 
     data.forEach((elem) => tree.insertNode(elem));
 
     console.log(JSON.stringify(tree));
+
+    return tree;
 }
 
 const generateEmptyTree = () => {
-    tree = null;
+    tree = new BinarySearchTree();
     console.log(tree)
 }
 
+// BFS
 const traversalBfs = () =>  {
     let result = breadFirstSearchTraversal(tree.root);
     console.log(result);
 }
 
+// DFS
 const showDfsTray = () => {
     isDfsTrayOpen = !isDfsTrayOpen;
     let orders = [inorderBtn, preorderBtn, postorderBtn];
