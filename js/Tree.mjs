@@ -33,7 +33,7 @@ export class BinarySearchTree {
         
         if (!this.root) {
             this.root = newNode;
-            createRootArc(this.xAxis, this.yAxis);
+            createRootArc(this.xAxis, this.yAxis, value);
         }
         else {
             let currentNode = this.root;
@@ -45,9 +45,9 @@ export class BinarySearchTree {
 
                     if (currentNode.left === null) {
                         currentNode.left = newNode;
-
+                        console.log('val ', value)
                         createLeftLine(this.xAxis, this.yAxis, this.xDrawToLeft, this.yDrawToLeft)
-                        createRootArc(this.xDrawToLeft, this.yDrawToLeft);
+                        createRootArc(this.xDrawToLeft, this.yDrawToLeft, value);
                         
                         return this;
                     }
@@ -65,7 +65,7 @@ export class BinarySearchTree {
                         currentNode.right = newNode;
 
                         createRightLine(this.xAxis, this.yAxis, this.xDrawToRight, this.yDrawToRight);
-                        createRootArc(this.xDrawToRight, this.yDrawToRight);
+                        createRootArc(this.xDrawToRight, this.yDrawToRight, value);
 
                         return this;
                     }

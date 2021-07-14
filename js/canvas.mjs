@@ -13,11 +13,15 @@ let cvs = document.getElementById('canvas');
 
 let ctx = cvs.getContext("2d");
 
-export const createRootArc = (xAxis, yAxis) => {
+export const createRootArc = (xAxis, yAxis, nodeValue) => {
+    nodeValue = nodeValue.toString();
+    // nodeValue = nodeValue.toString();
     console.log('xAxis ', xAxis, 'yAxis', yAxis)
     ctx.beginPath();
     ctx.arc(xAxis, yAxis, rootCircle.size, 0, Math.PI * 2);
-    ctx.fillStyle = 'black'
+    ctx.fillStyle = 'black';
+    ctx.font = "20px Arial";
+    ctx.fillText(nodeValue, xAxis+20, yAxis)
     ctx.fill();
 }
 
