@@ -17,6 +17,12 @@ import { dfsOrderContainer } from "./components.mjs";
 import { inorderBtn } from "./components.mjs";
 import { preorderBtn } from "./components.mjs";
 import { postorderBtn } from "./components.mjs";
+import { clearCanvas } from "./canvas.mjs";
+import { insertBtn } from "./components.mjs";
+import { insertDiv } from "./components.mjs";
+import { insertContainer } from "./components.mjs";
+import { submitInsert } from "./components.mjs";
+import { insertInput } from "./components.mjs";
 // import { root } from './.mjs';
 // import { createRootArc } from './canvas.mjs';
 
@@ -58,14 +64,17 @@ const handleTraversalUI = () => {
 }
 
 const generateRandomTree = () => {
-    let data = [ 13, 7, 1, 4, 19, 5, 15, 9, 14 ];
-    // let data = [9, 4, 1, 6, 20, 3, 15, 40, 60, 16];
+    generateEmptyTree();
+    let data = [];
+    // let data = [ 8, 5, 17, 4, 20, 15, 18, 11, 13 ]
+    // let data = [ 13, 7, 1, 4, 19, 5, 15, 9, 14 ];
+    // let data = [ 20, 8, 11, 4, 13, 18, 1, 16, 12 ]
     tree = new BinarySearchTree();
 
-    // while (data.length <= 8) {
-    //     let randomNum = Math.floor(Math.random() * 20) + 1;
-    //     if (data.indexOf(randomNum) === -1 ) data.push(randomNum);
-    // };
+    while (data.length <= 8) {
+        let randomNum = Math.floor(Math.random() * 20) + 1;
+        if (data.indexOf(randomNum) === -1 ) data.push(randomNum);
+    };
     console.log(data)
 
     data.forEach((elem) => tree.insertNode(elem));
@@ -77,6 +86,7 @@ const generateRandomTree = () => {
 
 const generateEmptyTree = () => {
     tree = new BinarySearchTree();
+    clearCanvas()
     console.log(tree)
 }
 
@@ -120,6 +130,19 @@ const handlePostOrderTraversal = () =>  {
     console.log('result list ', result);
 }
 
+const handleInsertButton = () => {
+    insertContainer.appendChild(insertDiv);
+}
+
+const handleInserValue = () => {
+    let nodeValue = insertInput.value;
+    console.log(nodeValue);
+    
+    tree.insertNode(parseInt(nodeValue));
+    
+    insertInput.value = Math.floor(Math.random() * 20) + 1;
+}
+
 // DOM
 const submitButton = document.createElement('button');
 submitButton.innerHTML = "Submit";
@@ -138,6 +161,8 @@ dfsButton.addEventListener('click', showDfsTray);
 inorderBtn.addEventListener('click', handleInOrderTraversal);
 preorderBtn.addEventListener('click', handlePreOrderTraversal);
 postorderBtn.addEventListener('click', handlePostOrderTraversal);
+insertBtn.addEventListener('click', handleInsertButton);
+submitInsert.addEventListener('click', handleInserValue)
 
 
 
