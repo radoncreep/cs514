@@ -16,7 +16,7 @@ let ctx = cvs.getContext("2d");
 export const createRootArc = (xAxis, yAxis, nodeValue) => {
     nodeValue = nodeValue.toString();
     // nodeValue = nodeValue.toString();
-    console.log('xAxis ', xAxis, 'yAxis', yAxis)
+    console.log('xAxis ', xAxis, 'yAxis', yAxis, 'val ', nodeValue)
     ctx.beginPath();
     ctx.arc(xAxis, yAxis, rootCircle.size, 0, Math.PI * 2);
     ctx.fillStyle = 'black';
@@ -25,16 +25,16 @@ export const createRootArc = (xAxis, yAxis, nodeValue) => {
     ctx.fill();
 }
 
-export const createLeftLine = (xAxis, yAxis, xDrawToLeft, yDrawToLeft) => {
-    console.log('xAxis ', xAxis, 'yAxis', yAxis, ' xDrawToLeft ', xDrawToLeft, 'yDrawToLeft ', yDrawToLeft)
+export const createLeftLine = (xAxis, yAxis, xDrawToLeft, yDrawToLeft, nodeValue) => {
+    console.log('xAxis ', xAxis, 'yAxis', yAxis, ' xDrawToLeft ', xDrawToLeft, 'yDrawToLeft ', yDrawToLeft,  'val ', nodeValue)
     ctx.beginPath()
     ctx.moveTo(xAxis, yAxis)
     ctx.lineTo(xDrawToLeft, yDrawToLeft)
     ctx.stroke()
 }
 
-export const createRightLine = (xAxis, yAxis, xDrawToRight, yDrawToRight) => {
-    console.log('xAxis ', xAxis, 'yAxis', yAxis, ' xDrawToRight ', xDrawToRight, 'yDrawToRight ', yDrawToRight)
+export const createRightLine = (xAxis, yAxis, xDrawToRight, yDrawToRight, nodeValue) => {
+    console.log('xAxis ', xAxis, 'yAxis', yAxis, ' xDrawToRight ', xDrawToRight, 'yDrawToRight ', yDrawToRight,  'val ', nodeValue)
     ctx.beginPath()
     ctx.moveTo(xAxis, yAxis)
     ctx.lineTo(xDrawToRight, yDrawToRight)
@@ -46,5 +46,8 @@ export const childNode = () => {
     ctx.arc(200, 200, rootCircle.size, 0, Math.PI * 2);
     ctx.fillStyle = 'black'
     ctx.fill();
+}
 
+export const clearCanvas = () => {
+    ctx.clearRect(0,0,cvs.width,cvs.height);
 }

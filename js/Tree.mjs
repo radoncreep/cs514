@@ -45,8 +45,7 @@ export class BinarySearchTree {
 
                     if (currentNode.left === null) {
                         currentNode.left = newNode;
-                        console.log('val ', value)
-                        createLeftLine(this.xAxis, this.yAxis, this.xDrawToLeft, this.yDrawToLeft)
+                        createLeftLine(this.xAxis, this.yAxis, this.xDrawToLeft, this.yDrawToLeft, value)
                         createRootArc(this.xDrawToLeft, this.yDrawToLeft, value);
                         
                         return this;
@@ -58,13 +57,15 @@ export class BinarySearchTree {
                 };
 
                 if (value > currentNode.value) {
+                    console.log('riiiightttt')
+                    console.log(typeof value)
                     this.xDrawToRight = this.xAxis + 100;
-                    this.yDrawToRight = this.yAxis + 100;
+                    this.yDrawToRight = this.yAxis + 30;
 
                     if (currentNode.right === null) {
                         currentNode.right = newNode;
 
-                        createRightLine(this.xAxis, this.yAxis, this.xDrawToRight, this.yDrawToRight);
+                        createRightLine(this.xAxis, this.yAxis, this.xDrawToRight, this.yDrawToRight, value);
                         createRootArc(this.xDrawToRight, this.yDrawToRight, value);
 
                         return this;
@@ -75,30 +76,20 @@ export class BinarySearchTree {
                     currentNode = currentNode.right;
                 }
 
+                if (value === currentNode.value) return;
+
             }
         }
     }
 
-    lookup(value) {
-        if (!this.root) return null;
-
+    deleteNode(value) {
         let currentNode = this.root;
 
         while (currentNode) {
-            if (value === currentNode.value) {
-                return currentNode
-            } else if (value < currentNode.value) {
-                currentNode = currentNode.left;
-            } else {
-                currentNode = currentNode.right;
+            if (value === currentNode) {
+                
             }
-        };
-
-        return null; // if non-existing value is looked up
-    }
-
-    deleteNode(value) {
-        
+        }
     }
 };
 

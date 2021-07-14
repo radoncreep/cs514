@@ -2,6 +2,18 @@ let btn = document.querySelector('#create');
 let formDiv = document.querySelector('.choose');
 let input = document.createElement('input');
 
+// INPUTS DIV
+let insertInput = document.createElement('input');
+insertInput.setAttribute('style', 'margin-left: 10px');
+insertInput.setAttribute('type', 'number');
+insertInput.setAttribute('value', 10);
+let submitInsert = document.createElement('button');
+submitInsert.innerHTML = 'Submit';
+let insertDiv = document.createElement('div');
+insertDiv.setAttribute('style', 'display: flex; backround-color: red;');
+insertDiv.appendChild(insertInput);
+insertDiv.appendChild(submitInsert);
+
 // BUTTONS
 let submitButton = document.createElement('button');
 
@@ -23,7 +35,9 @@ postorderBtn.innerHTML = "PostOrder";
 
 let dfsOrderContainer = document.createElement('div');
 dfsOrderContainer.setAttribute('id', 'dfs-order-container');
-dfsOrderContainer.setAttribute('style', 'display: flex; align-items: flex-end')
+dfsOrderContainer.setAttribute('style', 'display: flex; align-items: flex-end');
+
+let insertBtn = document.getElementById('insert-input');
 
 
 // TRAVERSALS DOM
@@ -45,15 +59,16 @@ dfsDiv.appendChild(dfsOrderContainer);
 
 let traversalTab = document.createElement('div');
 traversalTab.setAttribute('id', 'traversal-selection-tab');
-traversalTab.setAttribute('style',  "background-color: red;");
+// traversalTab.setAttribute('style',  "background-color: red;");
 traversalTab.style = 
-    "display: flex; flex-direction: column; height: 250px; background-color: red; width: 100%;"
+    "display: flex; flex-direction: column; height: 250px; width: 100%;"
 traversalTab.appendChild(bfsButton);
 traversalTab.appendChild(dfsDiv);
 
 
 
 let traversalContainer = document.querySelector('.traversal-container');
+let insertContainer = document.querySelector('.insert-container');
 
 export {
     bfsButton,
@@ -63,11 +78,16 @@ export {
     emptyBtn,
     formDiv,
     input,
+    insertBtn,
+    insertContainer,
+    insertDiv,
+    insertInput,
     inorderBtn,
     preorderBtn,
     postorderBtn,
     randomBtn,
     submitButton,
+    submitInsert,
     traversalContainer,
     traversalTab
 }
