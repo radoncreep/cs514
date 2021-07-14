@@ -17,6 +17,11 @@ import { dfsOrderContainer } from "./components.mjs";
 import { inorderBtn } from "./components.mjs";
 import { preorderBtn } from "./components.mjs";
 import { postorderBtn } from "./components.mjs";
+// import { root } from './.mjs';
+// import { createRootArc } from './canvas.mjs';
+
+// createRootArc(300, 200)
+
 
 //  GLOBAL VARIABLES
 let tree = new BinarySearchTree();
@@ -53,13 +58,15 @@ const handleTraversalUI = () => {
 }
 
 const generateRandomTree = () => {
-    let data = [];
+    let data = [ 13, 7, 1, 4, 19, 5, 15, 9, 14 ];
+    // let data = [9, 4, 1, 6, 20, 3, 15, 40, 60, 16];
     tree = new BinarySearchTree();
 
-    while (data.length <= 8) {
-        let randomNum = Math.floor(Math.random() * 20) + 1;
-        if (data.indexOf(randomNum) === -1 ) data.push(randomNum);
-    };
+    // while (data.length <= 8) {
+    //     let randomNum = Math.floor(Math.random() * 20) + 1;
+    //     if (data.indexOf(randomNum) === -1 ) data.push(randomNum);
+    // };
+    console.log(data)
 
     data.forEach((elem) => tree.insertNode(elem));
 
