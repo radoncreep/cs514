@@ -66,6 +66,7 @@ const handleTraversalUI = () => {
 const generateRandomTree = () => {
     generateEmptyTree();
     let data = [];
+    // let data = [10, 17, 9, 16, 28, 13]
     // let data = [ 8, 5, 17, 4, 20, 15, 18, 11, 13 ]
     // let data = [ 13, 7, 1, 4, 19, 5, 15, 9, 14 ];
     // let data = [ 20, 8, 11, 4, 13, 18, 1, 16, 12 ]
