@@ -23,6 +23,9 @@ import { insertDiv } from "./components.mjs";
 import { insertContainer } from "./components.mjs";
 import { submitInsert } from "./components.mjs";
 import { insertInput } from "./components.mjs";
+import { depthLimitedButton } from "./components.mjs";
+import { depthLimitedSearch } from "./dls.js";
+import { dlsContainer } from "./components.mjs";
 // import { root } from './.mjs';
 // import { createRootArc } from './canvas.mjs';
 
@@ -66,20 +69,18 @@ const handleTraversalUI = () => {
 const generateRandomTree = () => {
     generateEmptyTree();
     let data = [];
+    // let data = [10, 17, 9, 16, 28, 13]
     // let data = [ 8, 5, 17, 4, 20, 15, 18, 11, 13 ]
     // let data = [ 13, 7, 1, 4, 19, 5, 15, 9, 14 ];
     // let data = [ 20, 8, 11, 4, 13, 18, 1, 16, 12 ]
     tree = new BinarySearchTree();
 
-    while (data.length <= 8) {
+    while (data.length < 5) {
         let randomNum = Math.floor(Math.random() * 20) + 1;
         if (data.indexOf(randomNum) === -1 ) data.push(randomNum);
     };
-    console.log(data)
 
     data.forEach((elem) => tree.insertNode(elem));
-
-    console.log(JSON.stringify(tree));
 
     return tree;
 }
@@ -87,13 +88,11 @@ const generateRandomTree = () => {
 const generateEmptyTree = () => {
     tree = new BinarySearchTree();
     clearCanvas()
-    console.log(tree)
 }
 
 // BFS
 const traversalBfs = () =>  {
     let result = breadFirstSearchTraversal(tree.root);
-    console.log(result);
 }
 
 // DFS
@@ -115,19 +114,16 @@ const showDfsTray = () => {
 const handleInOrderTraversal = () =>  {
     let { inOrderTraversal } = depthFirstSearch();
     let result = inOrderTraversal(tree.root, []);
-    console.log('result list ', result);
 }
 
 const handlePreOrderTraversal = () =>  {
     let { preOrderTraversal } = depthFirstSearch();
     let result = preOrderTraversal(tree.root, []);
-    console.log('result list ', result);
 }
 
 const handlePostOrderTraversal = () =>  {
     let { postOrderTraversal } = depthFirstSearch();
     let result = postOrderTraversal(tree.root, []);
-    console.log('result list ', result);
 }
 
 const handleInsertButton = () => {
@@ -136,12 +132,35 @@ const handleInsertButton = () => {
 
 const handleInserValue = () => {
     let nodeValue = insertInput.value;
-    console.log(nodeValue);
     
     tree.insertNode(parseInt(nodeValue));
     
     insertInput.value = Math.floor(Math.random() * 20) + 1;
+};
+
+let dlsInput = document.createElement('input');
+let submitNode = document.createElement('button');
+
+const handleDepthLimitedTraversal = () => {
+    let goalNode = parseInt(dlsInput.value);
+    let depth = 0, limit = 2;
+    let visited = new Set();
+    let stack = [];
+
+    let result = depthLimitedSearch(tree.root, goalNode, depth, limit, visited, stack);
+    console.log('DLS ', result)
+};
+
+const handleDlsUI = () => {
+    
+    submitNode.innerHTML = 'Submit';
+
+    dlsContainer.appendChild(dlsInput);
+    dlsContainer.appendChild(submitNode);
+
+    submitNode.addEventListener('click', handleDepthLimitedTraversal);
 }
+
 
 // DOM
 const submitButton = document.createElement('button');
@@ -158,6 +177,7 @@ let traversalBtn = document.querySelector('#traversal');
 traversalBtn.addEventListener('click', handleTraversalUI);
 bfsButton.addEventListener('click', traversalBfs);
 dfsButton.addEventListener('click', showDfsTray);
+depthLimitedButton.addEventListener('click', handleDlsUI)
 inorderBtn.addEventListener('click', handleInOrderTraversal);
 preorderBtn.addEventListener('click', handlePreOrderTraversal);
 postorderBtn.addEventListener('click', handlePostOrderTraversal);
@@ -169,7 +189,6 @@ submitInsert.addEventListener('click', handleInserValue)
 
 
 
-// console.log(JSON.stringify(tree.lookup(4)));
 
 // console.log(JSON.stringify(tree));
 // const creatButton = d3.selectAll('button').on('click', inputVisible);

@@ -23,11 +23,11 @@ export class BinarySearchTree {
 
     insertNode(value) {
         this.xAxis = window.innerWidth / 2;
-        this.yAxis = 100;
+        this.yAxis = 50;
         this.xDrawToLeft = this.xAxis - 100;
         this.yDrawToLeft = 100;
         this.xDrawToRight = this.xAxis + 100;
-        this.yDrawToRight = this.yAxis + 100;
+        this.yDrawToRight = this.yAxis + 200;
         
         const newNode = new Node(value);
         
@@ -41,7 +41,7 @@ export class BinarySearchTree {
             while (true) { // loops till new node is inserted and a return statement is exectuted
                 if (value < currentNode.value) {
                     this.xDrawToLeft = this.xAxis - 150;
-                    this.yDrawToLeft += 100;
+                    this.yDrawToLeft = this.yAxis + 100;
 
                     if (currentNode.left === null) {
                         currentNode.left = newNode;
@@ -57,10 +57,9 @@ export class BinarySearchTree {
                 };
 
                 if (value > currentNode.value) {
-                    console.log('riiiightttt')
-                    console.log(typeof value)
+
                     this.xDrawToRight = this.xAxis + 100;
-                    this.yDrawToRight = this.yAxis + 30;
+                    this.yDrawToRight = this.yAxis + 100;
 
                     if (currentNode.right === null) {
                         currentNode.right = newNode;

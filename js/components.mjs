@@ -51,11 +51,22 @@ dfsButton.setAttribute('id', 'dfsBtn');
 dfsButton.setAttribute('style', 'margin-top: 10px; width: 60px; height: 30px;');
 dfsButton.innerHTML = 'DFS';
 
+
 let dfsDiv = document.createElement('div');
 dfsDiv.setAttribute('id', 'dfs-div');
 dfsDiv.setAttribute('style', 'display: flex;')
 dfsDiv.appendChild(dfsButton);
 dfsDiv.appendChild(dfsOrderContainer);
+
+let dlsContainer = document.createElement('div');
+dlsContainer.setAttribute('style', 'display: flex; flex-direction: row; ');
+
+let depthLimitedButton = document.createElement('button');
+depthLimitedButton.setAttribute('id', 'dlsBtn');
+depthLimitedButton.setAttribute('style', 'margin-top: 10px; width: 60px; height: 30px;');
+depthLimitedButton.innerHTML = 'DLS';
+
+dlsContainer.appendChild(depthLimitedButton);
 
 let traversalTab = document.createElement('div');
 traversalTab.setAttribute('id', 'traversal-selection-tab');
@@ -64,6 +75,7 @@ traversalTab.style =
     "display: flex; flex-direction: column; height: 250px; width: 100%;"
 traversalTab.appendChild(bfsButton);
 traversalTab.appendChild(dfsDiv);
+traversalTab.appendChild(dlsContainer);
 
 
 
@@ -75,6 +87,8 @@ export {
     btn,
     dfsButton,
     dfsOrderContainer,
+    depthLimitedButton,
+    dlsContainer,
     emptyBtn,
     formDiv,
     input,
