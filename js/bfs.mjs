@@ -1,3 +1,6 @@
+import { outputContainer } from "./components.mjs";
+import { createNodeDisplay } from "./mockimation.mjs";
+
 export const breadFirstSearchTraversal = (root) => {
     if (!root) return null;
 
@@ -5,9 +8,13 @@ export const breadFirstSearchTraversal = (root) => {
     let list = [], queue= [];
 
     queue.push(currentNode);
+    outputContainer.innerHTML = "";
 
     while (queue.length > 0) {
         currentNode = queue.shift();
+
+        
+        createNodeDisplay(currentNode.value)
         list.push(currentNode.value);
 
         if (currentNode.left) queue.push(currentNode.left);
