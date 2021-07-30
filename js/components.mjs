@@ -78,9 +78,14 @@ traversalTab.appendChild(dfsDiv);
 traversalTab.appendChild(dlsContainer);
 
 
-
 let traversalContainer = document.querySelector('.traversal-container');
 let insertContainer = document.querySelector('.insert-container');
+
+let outputContainer = document.querySelector('.output-display');
+outputContainer.setAttribute('style', 'display: flex; flex-direction: row; width: inherit; justify-content: space-around');
+
+let outputDiv = document.querySelector('.output');
+outputDiv.appendChild(outputContainer);
 
 export {
     bfsButton,
@@ -97,6 +102,7 @@ export {
     insertDiv,
     insertInput,
     inorderBtn,
+    outputContainer,
     preorderBtn,
     postorderBtn,
     randomBtn,
