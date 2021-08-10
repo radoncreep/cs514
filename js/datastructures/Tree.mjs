@@ -1,6 +1,7 @@
-import { createRightLine } from "./canvas.mjs";
-import { createLeftLine } from "./canvas.mjs";
-import { createRootArc } from "./canvas.mjs";
+import { createRootArc } from '../graphics/canvas.mjs';
+import { createLeftLine } from '../graphics/canvas.mjs';
+import { createRightLine } from '../graphics/canvas.mjs';
+
 
 class Node {
     constructor(value, left = null, right = null) {
