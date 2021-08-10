@@ -1,20 +1,22 @@
-import { BinarySearchTree } from "./Tree.mjs";
-import { breadFirstSearchTraversal } from "./components/bfs/bfs.mjs";
+import { BinarySearchTree } from "../datastructures/Tree.mjs";
+import { breadFirstSearchTraversal } from "../components/bfs/bfs.mjs";
 import { 
     btn,
     emptyBtn,
     formDiv,
     randomBtn,
-    traversalContainer
- } from "./components.mjs";
-import { depthFirstSearch } from "./components/dfs/dfs.mjs";
-import { traversalTab } from "./components.mjs";
+    traversalContainer,
+    traversalTab,
+    insertBtn,
+    insertDiv,
+    insertContainer,
+    submitInsert,
+    insertInput
+ } from "../containers.mjs";
+import { depthFirstSearch } from "../components/dfs/dfs.mjs";
+
+
 import { clearCanvas } from "./canvas.mjs";
-import { insertBtn } from "./components.mjs";
-import { insertDiv } from "./components.mjs";
-import { insertContainer } from "./components.mjs";
-import { submitInsert } from "./components.mjs";
-import { insertInput } from "./components.mjs";
 import { 
     depthLimitedButton,
     dlsContainer,
@@ -22,14 +24,17 @@ import {
     depthInputElement,
     dlsSearchInputElement,
     dlsForm
-} from "./components/dls/dlsComponents.mjs";
-import { depthLimitedSearch } from './components/dls/depthLimitedSearch.mjs';
-import { bfsButton } from "./components/bfs/bfsComponent.mjs";
-import { inorderBtn } from "./components/dfs/dfsComponent.mjs";
-import { preorderBtn } from "./components/dfs/dfsComponent.mjs";
-import { postorderBtn } from "./components/dfs/dfsComponent.mjs";
-import { dfsOrderContainer } from "./components/dfs/dfsComponent.mjs";
-import { dfsButton } from "./components/dfs/dfsComponent.mjs";
+} from "../components/dls/dlsComponents.mjs";
+import { bfsButton } from "../components/bfs/bfsComponent.mjs";
+import { 
+    inorderBtn,
+    preorderBtn,
+    postorderBtn,
+    dfsOrderContainer,
+    dfsButton
+} from "../components/dfs/dfsComponent.mjs";
+import { depthLimitedSearch } from '../components/dls/depthLimitedSearch.mjs';
+
 
 //  GLOBAL VARIABLES
 let tree = new BinarySearchTree();

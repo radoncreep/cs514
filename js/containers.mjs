@@ -28,16 +28,7 @@ randomBtn.setAttribute('id', 'rndBtn');
 let emptyBtn =  document.createElement('button');
 emptyBtn.innerHTML = "Empty";
 
-
-
 let insertBtn = document.getElementById('insert-input');
-
-
-// TRAVERSALS DOM
-
-
-
-
 
 
 let traversalTab = document.createElement('div');
