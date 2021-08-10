@@ -1,17 +1,14 @@
 import { BinarySearchTree } from "./Tree.mjs";
-import { breadFirstSearchTraversal } from "./bfs.mjs";
+import { breadFirstSearchTraversal } from "./components/bfs/bfs.mjs";
 import { 
-    bfsButton,
     dfsButton,
     btn,
     emptyBtn,
     formDiv,
-    input,
     randomBtn,
     traversalContainer
  } from "./components.mjs";
 import { depthFirstSearch } from "./dfs.mjs";
-// import { traversalContainer } from "./components.mjs";
 import { traversalTab } from "./components.mjs";
 import { dfsOrderContainer } from "./components.mjs";
 import { inorderBtn } from "./components.mjs";
@@ -23,14 +20,16 @@ import { insertDiv } from "./components.mjs";
 import { insertContainer } from "./components.mjs";
 import { submitInsert } from "./components.mjs";
 import { insertInput } from "./components.mjs";
-import { depthLimitedButton } from "./components.mjs";
-import { depthLimitedSearch } from "./dls.js";
-import { dlsContainer } from "./components.mjs";
-// import { root } from './.mjs';
-// import { createRootArc } from './canvas.mjs';
-
-// createRootArc(300, 200)
-
+import { 
+    depthLimitedButton,
+    dlsContainer,
+    dlsSubmitInputElement,
+    depthInputElement,
+    dlsSearchInputElement,
+    dlsForm
+} from "./components/dls/dlsComponents.mjs";
+import { depthLimitedSearch } from './components/dls/depthLimitedSearch.mjs';
+import { bfsButton } from "./components/bfs/bfsComponent.mjs";
 
 //  GLOBAL VARIABLES
 let tree = new BinarySearchTree();
@@ -138,27 +137,21 @@ const handleInserValue = () => {
     insertInput.value = Math.floor(Math.random() * 20) + 1;
 };
 
-let dlsInput = document.createElement('input');
-let submitNode = document.createElement('button');
-
 const handleDepthLimitedTraversal = () => {
-    let goalNode = parseInt(dlsInput.value);
-    let depth = 0, limit = 2;
+    let depthValue = parseInt(depthInputElement.value)    
+    let goalNode = parseInt(dlsSearchInputElement.value);
+    let depthCount = 0;
     let visited = new Set();
     let stack = [];
 
-    let result = depthLimitedSearch(tree.root, goalNode, depth, limit, visited, stack);
+    let result = depthLimitedSearch(tree.root, goalNode, depthCount, depthValue, visited, stack);
     console.log('DLS ', result)
 };
 
 const handleDlsUI = () => {
-    
-    submitNode.innerHTML = 'Submit';
+    dlsContainer.appendChild(dlsForm);
 
-    dlsContainer.appendChild(dlsInput);
-    dlsContainer.appendChild(submitNode);
-
-    submitNode.addEventListener('click', handleDepthLimitedTraversal);
+    dlsSubmitInputElement.addEventListener('click', handleDepthLimitedTraversal);
 }
 
 
@@ -177,13 +170,13 @@ let traversalBtn = document.querySelector('#traversal');
 traversalBtn.addEventListener('click', handleTraversalUI);
 bfsButton.addEventListener('click', traversalBfs);
 dfsButton.addEventListener('click', showDfsTray);
-depthLimitedButton.addEventListener('click', handleDlsUI)
 inorderBtn.addEventListener('click', handleInOrderTraversal);
 preorderBtn.addEventListener('click', handlePreOrderTraversal);
 postorderBtn.addEventListener('click', handlePostOrderTraversal);
 insertBtn.addEventListener('click', handleInsertButton);
 submitInsert.addEventListener('click', handleInserValue)
 
+depthLimitedButton.addEventListener('click', handleDlsUI)
 
 
 
