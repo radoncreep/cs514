@@ -1,4 +1,5 @@
 import { bfsButton } from "./components/bfs/bfsComponent.mjs";
+import { dfsDiv } from "./components/dfs/dfsComponent.mjs";
 import { dlsContainer } from "./components/dls/dlsComponents.mjs";
 
 let btn = document.querySelector('#create');
@@ -27,18 +28,7 @@ randomBtn.setAttribute('id', 'rndBtn');
 let emptyBtn =  document.createElement('button');
 emptyBtn.innerHTML = "Empty";
 
-// TRAVERSALS CHILDS INORDER PREORDER POSTORDER
-let inorderBtn = document.createElement('button');
-inorderBtn.innerHTML = "Inorder"
-let preorderBtn = document.createElement('button');
-preorderBtn.innerHTML = "Preorder"
 
-let postorderBtn = document.createElement('button');
-postorderBtn.innerHTML = "PostOrder";
-
-let dfsOrderContainer = document.createElement('div');
-dfsOrderContainer.setAttribute('id', 'dfs-order-container');
-dfsOrderContainer.setAttribute('style', 'display: flex; align-items: flex-end');
 
 let insertBtn = document.getElementById('insert-input');
 
@@ -46,17 +36,6 @@ let insertBtn = document.getElementById('insert-input');
 // TRAVERSALS DOM
 
 
-let dfsButton = document.createElement('button');
-dfsButton.setAttribute('id', 'dfsBtn');
-dfsButton.setAttribute('style', 'margin-top: 10px; width: 60px; height: 30px;');
-dfsButton.innerHTML = 'DFS';
-
-
-let dfsDiv = document.createElement('div');
-dfsDiv.setAttribute('id', 'dfs-div');
-dfsDiv.setAttribute('style', 'display: flex;')
-dfsDiv.appendChild(dfsButton);
-dfsDiv.appendChild(dfsOrderContainer);
 
 
 
@@ -82,8 +61,6 @@ outputDiv.appendChild(outputContainer);
 
 export {
     btn,
-    dfsButton,
-    dfsOrderContainer,
     emptyBtn,
     formDiv,
     input,
@@ -91,10 +68,7 @@ export {
     insertContainer,
     insertDiv,
     insertInput,
-    inorderBtn,
     outputContainer,
-    preorderBtn,
-    postorderBtn,
     randomBtn,
     submitButton,
     submitInsert,
