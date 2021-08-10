@@ -26,6 +26,10 @@ import { insertInput } from "./components.mjs";
 import { depthLimitedButton } from "./components.mjs";
 import { depthLimitedSearch } from "./dls.js";
 import { dlsContainer } from "./components.mjs";
+import { dlsForm } from "./components.mjs";
+import { dlsSubmitInputElement } from "./components.mjs";
+import { dlsSearchInputElement } from "./components.mjs";
+import { depthInputElement } from "./components.mjs";
 // import { root } from './.mjs';
 // import { createRootArc } from './canvas.mjs';
 
@@ -138,27 +142,21 @@ const handleInserValue = () => {
     insertInput.value = Math.floor(Math.random() * 20) + 1;
 };
 
-let dlsInput = document.createElement('input');
-let submitNode = document.createElement('button');
-
 const handleDepthLimitedTraversal = () => {
-    let goalNode = parseInt(dlsInput.value);
-    let depth = 0, limit = 2;
+    let depthValue = parseInt(depthInputElement.value)    
+    let goalNode = parseInt(dlsSearchInputElement.value);
+    let depthCount = 0;
     let visited = new Set();
     let stack = [];
 
-    let result = depthLimitedSearch(tree.root, goalNode, depth, limit, visited, stack);
+    let result = depthLimitedSearch(tree.root, goalNode, depthCount, depthValue, visited, stack);
     console.log('DLS ', result)
 };
 
 const handleDlsUI = () => {
-    
-    submitNode.innerHTML = 'Submit';
+    dlsContainer.appendChild(dlsForm);
 
-    dlsContainer.appendChild(dlsInput);
-    dlsContainer.appendChild(submitNode);
-
-    submitNode.addEventListener('click', handleDepthLimitedTraversal);
+    dlsSubmitInputElement.addEventListener('click', handleDepthLimitedTraversal);
 }
 
 

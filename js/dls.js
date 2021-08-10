@@ -1,4 +1,7 @@
-export const depthLimitedSearch = (root, goalNode = 17, depth=0, limit=2, visited = new Set(), stack = []) => {
+export const depthLimitedSearch = (root, goalNode = 17, depthCount, depthValue, visited = new Set(), stack = []) => {
+    console.log('depthCount ', depthCount);
+    console.log('depthValue ', depthValue);
+    console.log('goal node', goalNode)
 
     if (!root) return null;
   
@@ -7,10 +10,11 @@ export const depthLimitedSearch = (root, goalNode = 17, depth=0, limit=2, visite
     visited[root.value] = true;
 
     while (stack.length > 0) {
-        if (depth <= limit) {
+        if (depthCount <= depthValue) {
             let currentNode = stack.pop();
          
             if (currentNode.value === goalNode) {
+                console.log('goal node found')
                 return currentNode;
             } else {
                 visited[currentNode.value];
@@ -19,7 +23,7 @@ export const depthLimitedSearch = (root, goalNode = 17, depth=0, limit=2, visite
 
                 if (currentNode.right) stack.push(currentNode.right);
 
-                depth++;
+                depthCount++;
             }
         } else {
             return 'goal node not found';
