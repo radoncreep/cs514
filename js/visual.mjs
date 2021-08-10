@@ -1,17 +1,14 @@
 import { BinarySearchTree } from "./Tree.mjs";
-import { breadFirstSearchTraversal } from "./bfs.mjs";
+import { breadFirstSearchTraversal } from "./components/bfs/bfs.mjs";
 import { 
-    bfsButton,
     dfsButton,
     btn,
     emptyBtn,
     formDiv,
-    input,
     randomBtn,
     traversalContainer
  } from "./components.mjs";
 import { depthFirstSearch } from "./dfs.mjs";
-// import { traversalContainer } from "./components.mjs";
 import { traversalTab } from "./components.mjs";
 import { dfsOrderContainer } from "./components.mjs";
 import { inorderBtn } from "./components.mjs";
@@ -23,18 +20,16 @@ import { insertDiv } from "./components.mjs";
 import { insertContainer } from "./components.mjs";
 import { submitInsert } from "./components.mjs";
 import { insertInput } from "./components.mjs";
-import { depthLimitedButton } from "./components.mjs";
-import { depthLimitedSearch } from "./dls.js";
-import { dlsContainer } from "./components.mjs";
-import { dlsForm } from "./components.mjs";
-import { dlsSubmitInputElement } from "./components.mjs";
-import { dlsSearchInputElement } from "./components.mjs";
-import { depthInputElement } from "./components.mjs";
-// import { root } from './.mjs';
-// import { createRootArc } from './canvas.mjs';
-
-// createRootArc(300, 200)
-
+import { 
+    depthLimitedButton,
+    dlsContainer,
+    dlsSubmitInputElement,
+    depthInputElement,
+    dlsSearchInputElement,
+    dlsForm
+} from "./components/dls/dlsComponents.mjs";
+import { depthLimitedSearch } from './components/dls/depthLimitedSearch.mjs';
+import { bfsButton } from "./components/bfs/bfsComponent.mjs";
 
 //  GLOBAL VARIABLES
 let tree = new BinarySearchTree();
@@ -175,13 +170,13 @@ let traversalBtn = document.querySelector('#traversal');
 traversalBtn.addEventListener('click', handleTraversalUI);
 bfsButton.addEventListener('click', traversalBfs);
 dfsButton.addEventListener('click', showDfsTray);
-depthLimitedButton.addEventListener('click', handleDlsUI)
 inorderBtn.addEventListener('click', handleInOrderTraversal);
 preorderBtn.addEventListener('click', handlePreOrderTraversal);
 postorderBtn.addEventListener('click', handlePostOrderTraversal);
 insertBtn.addEventListener('click', handleInsertButton);
 submitInsert.addEventListener('click', handleInserValue)
 
+depthLimitedButton.addEventListener('click', handleDlsUI)
 
 
 

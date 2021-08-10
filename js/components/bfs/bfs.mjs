@@ -1,5 +1,5 @@
-import { outputContainer } from "./components.mjs";
-import { createNodeDisplay } from "./mockimation.mjs";
+import { outputContainer } from "../../components.mjs";
+import { createNodeDisplay } from '../../mockimation.mjs'
 
 export const breadFirstSearchTraversal = (root) => {
     if (!root) return null;
