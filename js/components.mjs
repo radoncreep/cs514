@@ -1,3 +1,6 @@
+import { bfsButton } from "./components/bfs/bfsComponent.mjs";
+import { dlsContainer } from "./components/dls/dlsComponents.mjs";
+
 let btn = document.querySelector('#create');
 let formDiv = document.querySelector('.choose');
 let input = document.createElement('input');
@@ -41,10 +44,7 @@ let insertBtn = document.getElementById('insert-input');
 
 
 // TRAVERSALS DOM
-let bfsButton = document.createElement('button')
-bfsButton.setAttribute('id', 'bfsBtn');
-bfsButton.setAttribute('style', ' width: 60px; height: 30px;');
-bfsButton.innerHTML = 'BFS';
+
 
 let dfsButton = document.createElement('button');
 dfsButton.setAttribute('id', 'dfsBtn');
@@ -58,47 +58,7 @@ dfsDiv.setAttribute('style', 'display: flex;')
 dfsDiv.appendChild(dfsButton);
 dfsDiv.appendChild(dfsOrderContainer);
 
-// DLS
-let dlsContainer = document.createElement('div');
-dlsContainer.setAttribute('style', 'display: flex; flex-direction: row;');
 
-let depthLimitedButton = document.createElement('button');
-depthLimitedButton.setAttribute('id', 'dlsBtn');
-depthLimitedButton.setAttribute('style', 'margin-top: 10px; width: 60px; height: 30px;');
-depthLimitedButton.innerHTML = 'DLS';
-
-dlsContainer.appendChild(depthLimitedButton);
-
-
-let dlsForm = document.createElement('form');
-dlsForm.setAttribute('action', "/");
-dlsForm.setAttribute("style", "display: flex; flex-direction: column; justify-content: space-around; height: 100px; margin: 10px 0 0 10px");
-
-
-let depthInputElement = document.createElement('input');
-depthInputElement.setAttribute("placeholder", "depth");
-depthInputElement.setAttribute("style", "padding: 5px;");
-
-
-let dlsSearchInputElement = document.createElement('input');
-dlsSearchInputElement.setAttribute("placeholder", "Search node...");
-dlsSearchInputElement.setAttribute("style", "padding: 5px;");
-
-
-let dlsSubmitInputElement = document.createElement('input');
-dlsSubmitInputElement.setAttribute("type", "submit")
-dlsSubmitInputElement.setAttribute("value", "Submit");
-dlsSubmitInputElement.setAttribute("style", "padding: 5px;");
-
-
-dlsSubmitInputElement.addEventListener('click', (event) => {
-    event.preventDefault()
-})
-
-
-dlsForm.appendChild(depthInputElement);
-dlsForm.appendChild(dlsSearchInputElement);
-dlsForm.appendChild(dlsSubmitInputElement);
 
 
 let traversalTab = document.createElement('div');
@@ -121,16 +81,9 @@ let outputDiv = document.querySelector('.output');
 outputDiv.appendChild(outputContainer);
 
 export {
-    bfsButton,
     btn,
     dfsButton,
     dfsOrderContainer,
-    dlsSearchInputElement,
-    depthLimitedButton,
-    dlsContainer,
-    depthInputElement,
-    dlsSubmitInputElement,
-    dlsForm,
     emptyBtn,
     formDiv,
     input,

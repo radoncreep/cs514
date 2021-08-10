@@ -28,6 +28,7 @@ export const depthLimitedSearch = (root, goalNode = 17, depthCount, depthValue, 
         } else {
             return 'goal node not found';
         }
+        console.log('visited ', visited)
     }
 
     return 'goal node not found'
