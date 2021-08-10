@@ -1,19 +1,14 @@
 import { BinarySearchTree } from "./Tree.mjs";
 import { breadFirstSearchTraversal } from "./components/bfs/bfs.mjs";
 import { 
-    dfsButton,
     btn,
     emptyBtn,
     formDiv,
     randomBtn,
     traversalContainer
  } from "./components.mjs";
-import { depthFirstSearch } from "./dfs.mjs";
+import { depthFirstSearch } from "./components/dfs/dfs.mjs";
 import { traversalTab } from "./components.mjs";
-import { dfsOrderContainer } from "./components.mjs";
-import { inorderBtn } from "./components.mjs";
-import { preorderBtn } from "./components.mjs";
-import { postorderBtn } from "./components.mjs";
 import { clearCanvas } from "./canvas.mjs";
 import { insertBtn } from "./components.mjs";
 import { insertDiv } from "./components.mjs";
@@ -30,6 +25,11 @@ import {
 } from "./components/dls/dlsComponents.mjs";
 import { depthLimitedSearch } from './components/dls/depthLimitedSearch.mjs';
 import { bfsButton } from "./components/bfs/bfsComponent.mjs";
+import { inorderBtn } from "./components/dfs/dfsComponent.mjs";
+import { preorderBtn } from "./components/dfs/dfsComponent.mjs";
+import { postorderBtn } from "./components/dfs/dfsComponent.mjs";
+import { dfsOrderContainer } from "./components/dfs/dfsComponent.mjs";
+import { dfsButton } from "./components/dfs/dfsComponent.mjs";
 
 //  GLOBAL VARIABLES
 let tree = new BinarySearchTree();
