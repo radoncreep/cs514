@@ -1,4 +1,4 @@
-import { outputContainer } from "./components.mjs";
+import { outputContainer } from "../containers.mjs";
 
 export const createNodeDisplay = (nodeValue) => {
    
@@ -15,5 +15,4 @@ export const createNodeDisplay = (nodeValue) => {
     box.appendChild(text);
 
     outputContainer.appendChild(box);
-
 }
