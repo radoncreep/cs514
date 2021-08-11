@@ -1,7 +1,4 @@
 export const depthLimitedSearch = (root, goalNode = 17, depthCount, depthValue, visited = new Set(), stack = []) => {
-    console.log('depthCount ', depthCount);
-    console.log('depthValue ', depthValue);
-    console.log('goal node', goalNode)
 
     if (!root) return null;
   
