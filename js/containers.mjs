@@ -1,6 +1,7 @@
 import { bfsButton } from "./components/bfs/bfsComponent.mjs";
 import { dfsDiv } from "./components/dfs/dfsComponent.mjs";
 import { dlsContainer } from "./components/dls/dlsComponents.mjs";
+import { iddfsContainer } from "./components/iterativeDeepening/iddfsComponent.mjs";
 
 let btn = document.querySelector('#create');
 let formDiv = document.querySelector('.choose');
@@ -39,6 +40,7 @@ traversalTab.style =
 traversalTab.appendChild(bfsButton);
 traversalTab.appendChild(dfsDiv);
 traversalTab.appendChild(dlsContainer);
+traversalTab.appendChild(iddfsContainer);
 
 
 let traversalContainer = document.querySelector('.traversal-container');

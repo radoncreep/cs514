@@ -34,6 +34,12 @@ import {
     dfsButton
 } from "../components/dfs/dfsComponent.mjs";
 import { depthLimitedSearch } from '../components/dls/depthLimitedSearch.mjs';
+import { iddfsButton } from "../components/iterativeDeepening/iddfsComponent.mjs";
+import { iddfsContainer } from "../components/iterativeDeepening/iddfsComponent.mjs";
+import { iddfsForm } from "../components/iterativeDeepening/iddfsComponent.mjs";
+import { iddfsSubmitInputElement } from "../components/iterativeDeepening/iddfsComponent.mjs";
+import { iddfsSearchInputElement } from "../components/iterativeDeepening/iddfsComponent.mjs";
+import { iterativeDeepeningSearch } from "../components/iterativeDeepening/iterativeDeepingSearch.mjs";
 
 
 //  GLOBAL VARIABLES
@@ -153,10 +159,31 @@ const handleDepthLimitedTraversal = () => {
     console.log('DLS ', result)
 };
 
+// shows form when button is clicked
 const handleDlsUI = () => {
     dlsContainer.appendChild(dlsForm);
 
     dlsSubmitInputElement.addEventListener('click', handleDepthLimitedTraversal);
+}
+
+const handleIddfsToggle = () => {
+    iddfsContainer.appendChild(iddfsForm);
+
+    /*  we don't need to manually set the depth limit
+        as it increases if the goal node isn't found
+        thereby expanding current node or the search/state space
+        a depth count isn't needed also
+    */
+    iddfsSubmitInputElement.addEventListener('click', () => {
+        let depthLimit = 0,
+            goalNode = parseInt(iddfsSearchInputElement.value),
+            visited = new Set(),
+            stack = [];
+
+        let result = iterativeDeepeningSearch(tree.root, goalNode, 2);
+        console.log(result)
+        
+    })
 }
 
 
@@ -179,9 +206,10 @@ inorderBtn.addEventListener('click', handleInOrderTraversal);
 preorderBtn.addEventListener('click', handlePreOrderTraversal);
 postorderBtn.addEventListener('click', handlePostOrderTraversal);
 insertBtn.addEventListener('click', handleInsertButton);
-submitInsert.addEventListener('click', handleInserValue)
+submitInsert.addEventListener('click', handleInserValue);
 
-depthLimitedButton.addEventListener('click', handleDlsUI)
+depthLimitedButton.addEventListener('click', handleDlsUI);
+iddfsButton.addEventListener('click', handleIddfsToggle);
 
 
 
