@@ -140,7 +140,7 @@ const handleInsertButton = () => {
     insertContainer.appendChild(insertDiv);
 }
 
-const handleInserValue = () => {
+const handleInsertValue = () => {
     let nodeValue = insertInput.value;
     
     tree.insertNode(parseInt(nodeValue));
@@ -148,22 +148,20 @@ const handleInserValue = () => {
     insertInput.value = Math.floor(Math.random() * 20) + 1;
 };
 
-const handleDepthLimitedTraversal = () => {
-    let depthValue = parseInt(depthInputElement.value)    
-    let goalNode = parseInt(dlsSearchInputElement.value);
-    let depthCount = 0;
-    let visited = new Set();
-    let stack = [];
-
-    let result = depthLimitedSearch(tree.root, goalNode, depthCount, depthValue, visited, stack);
-    console.log('DLS ', result)
-};
-
 // shows form when button is clicked
 const handleDlsUI = () => {
     dlsContainer.appendChild(dlsForm);
 
-    dlsSubmitInputElement.addEventListener('click', handleDepthLimitedTraversal);
+    dlsSubmitInputElement.addEventListener('click', () => {
+        let depthValue = parseInt(depthInputElement.value)    
+        let goalNode = parseInt(dlsSearchInputElement.value);
+        let depthCount = 0;
+        let visited = new Set();
+        let stack = [];
+    
+        let result = depthLimitedSearch(tree.root, goalNode, depthCount, depthValue, visited, stack);
+        console.log('DLS ', result)
+    });
 }
 
 const handleIddfsToggle = () => {
@@ -175,14 +173,24 @@ const handleIddfsToggle = () => {
         a depth count isn't needed also
     */
     iddfsSubmitInputElement.addEventListener('click', () => {
-        let depthLimit = 0,
-            goalNode = parseInt(iddfsSearchInputElement.value),
-            visited = new Set(),
-            stack = [];
 
-        let result = iterativeDeepeningSearch(tree.root, goalNode, 2);
-        console.log(result)
-        
+        let count = 0;
+        const getMaxDepth = (root) => {
+            if (!root) return 0;
+
+            let left = getMaxDepth(root.left);
+            let right = getMaxDepth(root.right);
+
+            // take the max of the left and right child of a node and sum with 1
+            let max = Math.max(left, right);
+            return max + 1;
+        }
+
+        let maxDepth = getMaxDepth(tree.root, count),
+            goalNode = parseInt(iddfsSearchInputElement.value);
+
+        let result = iterativeDeepeningSearch(tree.root, goalNode, maxDepth);
+        // console.log(result)
     })
 }
 
@@ -206,7 +214,7 @@ inorderBtn.addEventListener('click', handleInOrderTraversal);
 preorderBtn.addEventListener('click', handlePreOrderTraversal);
 postorderBtn.addEventListener('click', handlePostOrderTraversal);
 insertBtn.addEventListener('click', handleInsertButton);
-submitInsert.addEventListener('click', handleInserValue);
+submitInsert.addEventListener('click', handleInsertValue);
 
 depthLimitedButton.addEventListener('click', handleDlsUI);
 iddfsButton.addEventListener('click', handleIddfsToggle);
