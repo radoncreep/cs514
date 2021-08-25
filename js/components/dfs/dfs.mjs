@@ -1,4 +1,9 @@
+import { outputContainer } from "../../containers.mjs";
+import { createNodeDisplay } from "../../graphics/mockimation.mjs";
+
 export const depthFirstSearch = () => {
+
+    outputContainer.innerHTML = "";
 
     const inOrderTraversal = (root, list) => { // left parent right (nodes)
         if (!root) return null;
@@ -9,6 +14,7 @@ export const depthFirstSearch = () => {
         };
         
         list.push(currentNode.value);
+        createNodeDisplay(currentNode.value);
         
         if (currentNode.right) {
             inOrderTraversal(currentNode.right, list);
@@ -22,6 +28,7 @@ export const depthFirstSearch = () => {
         let currentNode = root;
 
         list.push(currentNode.value);
+        createNodeDisplay(currentNode.value);
 
         if (currentNode.left) {
             inOrderTraversal(currentNode.left, list);
@@ -47,6 +54,7 @@ export const depthFirstSearch = () => {
         };
 
         list.push(currentNode.value);
+        createNodeDisplay(currentNode.value);
 
         return list;
     }
