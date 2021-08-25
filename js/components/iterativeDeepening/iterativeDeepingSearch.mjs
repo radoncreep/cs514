@@ -1,22 +1,25 @@
+import { outputContainer } from "../../containers.mjs";
+import { createNodeDisplay } from '../../graphics/mockimation.mjs';
+
 export const iterativeDeepeningSearch = (currentNode, goalNode, maxDepth) => {
 
     const searchDepthLimit = (currentNode, goalNode, depth) => {
-        console.log('recurse ', currentNode.value)
+        outputContainer.innerHTML = "";
+
         if (currentNode.value === goalNode) return currentNode.value;
 
         if (depth <= 0) return null;
 
         if (currentNode.left) {
-           let left = searchDepthLimit(currentNode.left, goalNode, depth-1);
-           if (left) return left;
-            
+            let left = searchDepthLimit(currentNode.left, goalNode, depth-1);
+            if (left) return left;
         };
-
+        
         if (currentNode.right) {
             let right = searchDepthLimit(currentNode.right, goalNode, depth-1)
             if (right) return right;
         }
-
+        
         return null;
     }
     
@@ -27,10 +30,13 @@ export const iterativeDeepeningSearch = (currentNode, goalNode, maxDepth) => {
             let res = searchDepthLimit(currentNode, goalNode, currentDepth)
             console.log('res', res);
             if (res) {
+                let message = `Goal node found at depth ${currentDepth}`;
+                createNodeDisplay(res, message)
                 return res;
             }
         }
 
+        createNodeDisplay('not found')
         return false;
     }
 
