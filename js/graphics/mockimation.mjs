@@ -12,7 +12,7 @@ export const createNodeDisplay = (nodeValue, message='') => {
     const msg = document.createElement('p');
 
     text1.setAttribute('style', 'color: #000; font-size: 16px; font-weight: bold;');
-    text1.innerText = nodeValue.toString();
+    text1.innerText = nodeValue ? nodeValue.toString() : null;
 
     msg.setAttribute('style', 'color: #000; font-size: 18px; font-weight: normal;');
     msg.innerText = message.toString();

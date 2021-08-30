@@ -40,6 +40,8 @@ import { iddfsForm } from "../components/iterativeDeepening/iddfsComponent.mjs";
 import { iddfsSubmitInputElement } from "../components/iterativeDeepening/iddfsComponent.mjs";
 import { iddfsSearchInputElement } from "../components/iterativeDeepening/iddfsComponent.mjs";
 import { iterativeDeepeningSearch } from "../components/iterativeDeepening/iterativeDeepingSearch.mjs";
+// import { WeightedGraph } from "../datastructures/WeightedGraph.mjs";
+import { graphBtn } from "../containers.mjs";
 
 
 //  GLOBAL VARIABLES
@@ -94,6 +96,12 @@ const generateRandomTree = () => {
 
     return tree;
 }
+
+// const createWeightedGraph = () => {
+//     let wGraph = new WeightedGraph();
+
+//     uniformCostSearch(wGraph);
+// }
 
 const generateEmptyTree = () => {
     tree = new BinarySearchTree();
@@ -203,6 +211,7 @@ submitButton.innerHTML = "Submit";
 // submitButton.addEventListener('submit', submitFunc)
 btn.addEventListener('click', inputVisible);
 randomBtn.addEventListener('click', generateRandomTree);
+// randomBtn.addEventListener('click', createWeightedGraph);
 emptyBtn.addEventListener('click', generateEmptyTree);
 
 // TRAVERSAL BTNS EVENTS
@@ -218,6 +227,7 @@ submitInsert.addEventListener('click', handleInsertValue);
 
 depthLimitedButton.addEventListener('click', handleDlsUI);
 iddfsButton.addEventListener('click', handleIddfsToggle);
+// graphBtn.addEventListener('click', createWeightedGraph)
 
 
 

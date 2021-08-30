@@ -4,6 +4,7 @@ import { dlsContainer } from "./components/dls/dlsComponents.mjs";
 import { iddfsContainer } from "./components/iterativeDeepening/iddfsComponent.mjs";
 
 let btn = document.querySelector('#create');
+let graphBtn = document.querySelector('#createGraph');
 let formDiv = document.querySelector('.choose');
 let input = document.createElement('input');
 
@@ -56,6 +57,7 @@ export {
     btn,
     emptyBtn,
     formDiv,
+    graphBtn,
     input,
     insertBtn,
     insertContainer,
