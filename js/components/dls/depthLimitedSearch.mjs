@@ -4,7 +4,7 @@ import { createNodeDisplay } from '../../graphics/mockimation.mjs';
 export const depthLimitedSearch = (root, goalNode = 17, depthCount, depthValue, visited = new Set(), stack = []) => {
 
     outputContainer.innerHTML = "";
-
+  
     if (!root) return null;
   
     stack.push(root);
