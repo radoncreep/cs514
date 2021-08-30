@@ -25,20 +25,33 @@ export const createRootArc = (xAxis, yAxis, nodeValue) => {
     ctx.fill();
 }
 
-export const createLeftLine = (xAxis, yAxis, xDrawToLeft, yDrawToLeft, nodeValue) => {
+export const createLeftLine = (xAxis, yAxis, xDrawToLeft, yDrawToLeft, nodeValue, structure="tree") => {
+    console.log('str', structure)
     console.log('xAxis ', xAxis, 'yAxis', yAxis, ' xDrawToLeft ', xDrawToLeft, 'yDrawToLeft ', yDrawToLeft,  'val ', nodeValue)
     ctx.beginPath()
     ctx.moveTo(xAxis, yAxis)
     ctx.lineTo(xDrawToLeft, yDrawToLeft)
     ctx.stroke()
+    if (structure === 'graph') {
+        ctx.fillStyle = 'black';
+        ctx.font = "20px Arial";
+        ctx.fillText(nodeValue, xAxis+20, yAxis)
+        ctx.fill();
+    }
 }
 
-export const createRightLine = (xAxis, yAxis, xDrawToRight, yDrawToRight, nodeValue) => {
+export const createRightLine = (xAxis, yAxis, xDrawToRight, yDrawToRight, nodeValue, structure="tree") => {
     console.log('xAxis ', xAxis, 'yAxis', yAxis, ' xDrawToRight ', xDrawToRight, 'yDrawToRight ', yDrawToRight,  'val ', nodeValue)
     ctx.beginPath()
     ctx.moveTo(xAxis, yAxis)
     ctx.lineTo(xDrawToRight, yDrawToRight)
     ctx.stroke()
+    if (structure === 'graph') {
+        ctx.fillStyle = 'black';
+        ctx.font = "20px Arial";
+        ctx.fillText(nodeValue, xAxis+20, yAxis)
+        ctx.fill();
+    }
 }
 
 export const childNode = () => {

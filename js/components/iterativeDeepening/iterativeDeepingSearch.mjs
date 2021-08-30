@@ -24,10 +24,9 @@ export const iterativeDeepeningSearch = (currentNode, goalNode, maxDepth) => {
     }
     
     const iddfsRecur = (currentNode, goalNode, maxDepth) => {
-        console.log('current node', currentNode)
         for (let currentDepth=0; currentDepth <= maxDepth; currentDepth++) {
             let res = searchDepthLimit(currentNode, goalNode, currentDepth);
-            
+
             if (res) {
                 let message = `Goal node found at depth ${currentDepth}`;
                 createNodeDisplay(res, message)
